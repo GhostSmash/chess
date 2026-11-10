@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Game Review · PGN analysis in your browser</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;800&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"></head>
+<body>
+<main class="app">
+ <section class="stage">
+  <div class="evalbar" id="evalbar" title="Evaluation"><i id="evalfill"></i><b id="evaltxt">0.0</b></div>
+  <div class="boardwrap" id="boardwrap"><div id="board" class="board"></div><svg id="arrow" viewBox="0 0 8 8"></svg><canvas id="fx"></canvas><div id="toast"></div></div>
+  <div class="nav">
+   <button id="first" aria-label="First">⏮</button><button id="prev" aria-label="Previous">◀</button><button id="next" aria-label="Next">▶</button><button id="last" aria-label="Last">⏭</button>
+   <button id="flip">Flip board</button>
+  </div>
+  <canvas id="graph" height="90"></canvas>
+ </section>
+ <aside class="side">
+  <h1>Game Review</h1>
+  <label for="pgn">Paste a PGN</label>
+  <textarea id="pgn" rows="5" spellcheck="false"></textarea>
+  <div class="row">
+   <label>Engine
+    <select id="eng">
+     <option value="lite">Stockfish 18 Lite (7 MB, fast)</option>
+     <option value="full">Stockfish 18 Full (large, stronger)</option>
+    </select></label>
+   <label>Depth <output id="dv">14</output><input id="depth" type="range" min="8" max="22" value="14"></label>
+  </div>
+  <p class="hint" id="enghint">Lite is quick but weaker. Full is much larger and slower on phones and old laptops, so analysis can stall or take minutes.</p>
+  <div class="row"><button class="primary" id="go">Analyze game</button><label class="chk"><input type="checkbox" id="snd" checked> Sound</label><label class="chk"><input type="checkbox" id="best"> Best move arrow</label></div>
+  <progress id="prog" value="0" max="1" hidden></progress>
+  <div id="summary" class="summary"></div>
+  <div id="moves" class="moves"></div>
+  <button id="try" disabled>Find the best move</button>
+ </aside>
+</main>
+<script type="module" src="js/app.js"></script>
+</body></html>
